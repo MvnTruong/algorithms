@@ -20,7 +20,7 @@ public class LRUUnitTest
             {
                 case "LRUCache":
                 {
-                    int capacity = values[i][0];
+                    var capacity = values[i][0];
                     cache = new LRUCache(capacity);
                     logs.Add(null);
                     break;
@@ -30,9 +30,9 @@ public class LRUUnitTest
                 {
                     EnsureInitialized(cache);
 
-                    int[] args = values[i];
-                    int key = args[0];
-                    int value = args[1];
+                    var args = values[i];
+                    var key = args[0];
+                    var value = args[1];
 
                     cache!.Put(key, value);
                     logs.Add(null);
@@ -43,8 +43,8 @@ public class LRUUnitTest
                 {
                     EnsureInitialized(cache);
 
-                    int key = values[i][0];
-                    int result = cache!.Get(key);
+                    var key = values[i][0];
+                    var result = cache!.Get(key);
 
                     logs.Add(result);
                     break;

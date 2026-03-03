@@ -8,8 +8,7 @@ public class MergeIntervalTests
     [MemberData(nameof(Cases))]
     public void MergeInterval_LeetCode_Tests(int[][] intervals, int[][] expected)
     {
-        IntervalMerger sut = new();
-        int[][] result = sut.Merge(intervals);
+        int[][] result = IntervalMerger.Merge(intervals);
         
         result.Should().BeEquivalentTo(expected, options => 
             options.WithStrictOrdering());
