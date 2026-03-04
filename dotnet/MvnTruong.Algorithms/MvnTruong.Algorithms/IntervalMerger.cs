@@ -4,15 +4,15 @@ public static class IntervalMerger
 {
     public static int[][] Merge(int[][] intervals)
     {
-        int[][] sorted = intervals.OrderBy(x => x[0]).ToArray(); // n log n
-
-        int[] current = sorted[0];
+        Array.Sort(intervals, (a, b) => a[0].CompareTo(b[0]));
+        
+        int[] current = intervals[0];
         List<int[]> finals = [];
         
-        for (var i = 1; i < sorted.Length; i += 1)
+        for (var i = 1; i < intervals.Length; i += 1)
         {
-            int[] interval = sorted[i];
-            if (Overlaps(current, interval))
+            int[] interval = intervals[i];
+            if (current[1] >= interval[0])
             {
                 current[1] = Math.Max(current[1], interval[1]);
             }
@@ -27,6 +27,4 @@ public static class IntervalMerger
         
         return finals.ToArray();
     }
-    
-    private static bool Overlaps(int[] a, int[] b) => a[1] >= b[0] && a[0] <= b[1];
 }
